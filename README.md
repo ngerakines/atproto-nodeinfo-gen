@@ -26,6 +26,12 @@ Docker:
 
     $ docker run --rm -v /path/to/your/www/.well-known/:/out ghcr.io/github/atproto-nodeinfo-gen:latest -n "My PDS" -d "A PDS for my project" -o /out/nodeinfo my-pds.example.com
 
+# Deployment
+
+The easiest thing to do is to run the container every 30 minutes using a crontab entry like:
+
+    0,30 * * * * docker run -v /path/to/your/www/.well-known/:/out/ ghcr.io/ngerakines/atproto-nodeinfo-gen:latest my-pds.example.com -o /out/nodeinfo
+
 # Container
 
 The container is built and published to the GitHub Container Registry (ghcr.io/github/atproto-nodeinfo-gen:latest) on every push to the main branch.
